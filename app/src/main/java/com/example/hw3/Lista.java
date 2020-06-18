@@ -9,8 +9,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,14 +25,25 @@ public class Lista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-        list = (ListView)findViewById(R.id.Lista);
+        list = (ListView)findViewById(R.id.ListOrder);
         Database db = new Database(getApplicationContext());
-        lista = db.getOrderDesc();
+        lista = db.llenar_lista();
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice,lista);
 
         list.setAdapter(adapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               // Log.i("Click", "click en el elemento " + position + " de mi ListView");
+                Toast.makeText(getApplicationContext(),
+                                           "" +position,Toast.LENGTH_LONG
+                                   ).show();
+            }
+
+
+        });
 
 
     }
@@ -60,7 +73,8 @@ public class Lista extends AppCompatActivity {
                 return true;
 
             case R.id.action_sort:
-                //AQUI EJECUTAS EL ordenar
+                Intent intento = new Intent(getApplicationContext(), Order.class);
+                startActivity(intento);
                 return true;
         }
 
