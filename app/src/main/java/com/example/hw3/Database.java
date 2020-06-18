@@ -61,4 +61,26 @@ public class Database extends SQLiteOpenHelper {
     return list;
 
     }
+
+    public ArrayList getOrderDesc(){
+        ArrayList<String> list = new ArrayList<>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "SELECT PRICE FROM CAR " ;
+        Cursor registers = database.query("CAR", null, null,
+                null, null, null, "PRICE" + " DESC", null);
+        if (registers.moveToFirst()){
+            do{
+                list.add(registers.getString(0)
+                        +" "+ registers.getString(1)
+                        +" "+ registers.getString(2)
+                        +" "+ registers.getString(3)
+                        +" "+ registers.getString(4)
+                        +" "+ registers.getString(5)
+
+                );
+            }while(registers.moveToNext());
+        }
+        return list;
+
+    }
 }

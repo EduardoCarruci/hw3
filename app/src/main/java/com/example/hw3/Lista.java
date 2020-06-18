@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,9 +25,13 @@ public class Lista extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
         list = (ListView)findViewById(R.id.Lista);
         Database db = new Database(getApplicationContext());
-        lista = db.llenar_lista();
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lista);
+        lista = db.getOrderDesc();
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice,lista);
+
         list.setAdapter(adapter);
+
+
+
 
     }
 
