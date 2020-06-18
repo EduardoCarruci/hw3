@@ -66,29 +66,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:text="ADD"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnDelete"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="63dp"
-        android:text="DELETE"
-        app:layout_constraintEnd_toStartOf="@+id/btnBack"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toEndOf="@+id/btnAdd"
+        android:text="ADD"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="63dp"
         android:layout_marginEnd="52dp"
         android:text="BACK"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnDelete"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
     <TextView
         android:id="@+id/textView"
@@ -139,15 +130,5 @@
         android:text="Price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
-        android:id="@+id/btnLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="35dp"
-        android:text="Lista"
-        app:layout_constraintStart_toStartOf="@+id/btnDelete"
-        app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button _btnInsert, _btnDelete,_btnLista;
+    Button _btnInsert, _btnDelete,_btnLista,_btnBack;
     EditText _txtID,_txtMake,_txtModel,_txtYear,_txtMileage,_txtPrice;
     SQLiteOpenHelper openHelper;
     SQLiteDatabase db;
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         _btnInsert = (Button)findViewById(R.id.btnAdd);
-        _btnDelete = (Button)findViewById(R.id.btnDelete);
-        _btnLista = (Button)findViewById(R.id.btnLista);
+        _btnBack = (Button)findViewById(R.id.btnBack);
+
 
         _txtMake = (EditText)findViewById(R.id.txtMake);
         _txtModel = (EditText)findViewById(R.id.txtModel);
@@ -54,22 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-        _btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db = openHelper.getWritableDatabase();
-                 String id = _txtID.getText().toString();
-                deleteData(id);
-                Toast.makeText(getApplicationContext(),
-                        "Delete Success",Toast.LENGTH_LONG
-                ).show();
+        //    _btnDelete.setOnClickListener(new View.OnClickListener() {
+        //        @Override
+        //        public void onClick(View v) {
+        //            db = openHelper.getWritableDatabase();
+        //             String id = _txtID.getText().toString();
+        //            deleteData(id);
+        //            Toast.makeText(getApplicationContext(),
+        //                    "Delete Success",Toast.LENGTH_LONG
+        //            ).show();
 
-            }
-        });
-        _btnLista.setOnClickListener(new View.OnClickListener() {
+        //        }
+        //    });
+
+        _btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intento = new Intent(getApplicationContext(),Lista.class);
+                Intent intento = new Intent(getApplicationContext(), Lista.class);
                 startActivity(intento);
             }
         });
@@ -88,7 +89,15 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put(Database.COLS_5,Integer.valueOf(mileage));
         contentValues.put(Database.COLS_6,Integer.valueOf(price));
         long id = db.insert(Database.TABLE_NAME,null,contentValues);
+        reset();
 
+    }
 
+    public void reset(){
+        _txtMake.setText("");
+        _txtModel.setText("");
+        _txtYear.setText("");
+        _txtMileage.setText("");
+        _txtPrice.setText("");
     }
 }

@@ -48,7 +48,14 @@ public class Database extends SQLiteOpenHelper {
         Cursor registers = database.rawQuery(query,null);
         if (registers.moveToFirst()){
             do{
-                list.add(registers.getString(0));
+                list.add(registers.getString(0)
+                +" "+ registers.getString(1)
+                                +" "+ registers.getString(2)
+                                +" "+ registers.getString(3)
+                                +" "+ registers.getString(4)
+                                +" "+ registers.getString(5)
+
+                );
             }while(registers.moveToNext());
         }
     return list;
